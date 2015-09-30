@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['major',['major',['../structmyohw__fw__version__t.html#ab397108a1401308a091e54c22fcc3f04',1,'myohw_fw_version_t']]],
+  ['minor',['minor',['../structmyohw__fw__version__t.html#a82c2847ad8f90593ce2fbd2d5e8658c3',1,'myohw_fw_version_t']]],
+  ['myo_5faddr',['myo_addr',['../_myo_bridge_8c.html#acee67c422a61e31e61c7640645f14e44',1,'MyoBridge.c']]],
+  ['myo_5fbase_5fuuid',['myo_base_uuid',['../myo__gatt_8c.html#a146317924a25ba3afaf14317376c6017',1,'myo_gatt.c']]],
+  ['myo_5fcccd_5fhandles',['myo_cccd_handles',['../myo__gatt_8c.html#a0aa5a7ad823abab8345c2250e77ecc47',1,'myo_gatt.c']]],
+  ['myo_5fconn_5fhandle',['myo_conn_handle',['../_myo_bridge_8c.html#a9d7c4978d6c3f8442f884a5dc6e12589',1,'MyoBridge.c']]],
+  ['myo_5fhandles',['myo_handles',['../myo__gatt_8c.html#ad76603899acce481d37d36670a557567',1,'myo_gatt.c']]],
+  ['myo_5findex',['myo_index',['../_myo_bridge_8c.html#a1d0b0d31841c10dafb12e787bab7852e',1,'MyoBridge.c']]],
+  ['myo_5flookup_5fservice_5fhandle',['myo_lookup_service_handle',['../myo__gatt_8c.html#a64087ff936fbdb771ab637364cb877da',1,'myo_gatt.c']]],
+  ['myo_5fservice_5fstate_5fservice_5faddr_5flookup',['myo_service_state_service_addr_lookup',['../myo__gatt_8c.html#a9793734157c76503c0faf2f0c48e4c03',1,'myo_gatt.c']]],
+  ['myo_5fuuid_5flookup',['myo_uuid_lookup',['../myo__gatt_8c.html#ab09bc806f2ffc942c37f6ccac09aceaf',1,'myo_gatt.c']]],
+  ['myobridge_5ftaskid',['MyoBridge_TaskID',['../_myo_bridge_8c.html#a7e8d697948c93f68ed1c3cdc4cc08c28',1,'MyoBridge_TaskID():&#160;MyoBridge.c'],['../serial_interface_8c.html#a7e8d697948c93f68ed1c3cdc4cc08c28',1,'MyoBridge_TaskID():&#160;MyoBridge.c']]],
+  ['myobridgebondcb',['MyoBridgeBondCB',['../_myo_bridge_8c.html#a9f73abf63630ce534aa1d639ae95cedb',1,'MyoBridge.c']]],
+  ['myobridgerolecb',['MyoBridgeRoleCB',['../_myo_bridge_8c.html#acb74ffb6e396870e67196773f1d423fd',1,'MyoBridge.c']]],
+  ['myobridgescanres',['myoBridgeScanRes',['../_myo_bridge_8c.html#a6ecb5b57af11b278d10428c4cb141ad9',1,'MyoBridge.c']]],
+  ['myohw_5ffirmware_5fversion_5fmajor',['myohw_firmware_version_major',['../group__myo__hardware.html#gae5c724c1915d061b5c8d17842a3e5795',1,'myohw.h']]],
+  ['myohw_5ffirmware_5fversion_5fminor',['myohw_firmware_version_minor',['../group__myo__hardware.html#ga830d2355d114b14a35f6df3821971d6d',1,'myohw.h']]],
+  ['myohw_5fnum_5femg_5fsensors',['myohw_num_emg_sensors',['../myohw_8h.html#aed6d6659d6fe9e04edc5c518c784b677',1,'myohw.h']]],
+  ['myoinfochar',['myoInfoChar',['../struct_myo_handles__t.html#ad111ea39c04b49e12641d562a9e47dd2',1,'MyoHandles_t']]]
+];

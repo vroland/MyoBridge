@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['myobridge',['MyoBridge',['../group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293',1,'MyoBridge']]],
+  ['myohw_5fstatic_5fassert_5fsized',['MYOHW_STATIC_ASSERT_SIZED',['../group__myo__hardware.html#gaa53e185f4a0eda4768e006b9f0e7abc9',1,'MYOHW_STATIC_ASSERT_SIZED(myohw_fw_info_t, 20):&#160;myohw.h'],['../group__myo__hardware.html#ga88a1b3ab0c11ac2516cfec49071304e2',1,'MYOHW_STATIC_ASSERT_SIZED(myohw_fw_version_t, 8):&#160;myohw.h'],['../group__myohw__control__commands.html#ga1683456510b6d79db6e96fd3962ef324',1,'MYOHW_STATIC_ASSERT_SIZED(myohw_command_header_t, 2):&#160;myohw.h'],['../group__myohw__control__commands.html#ga781aaafe8dfd52735bc5062d03b84906',1,'MYOHW_STATIC_ASSERT_SIZED(myohw_command_set_mode_t, 5):&#160;myohw.h'],['../group__myohw__control__commands.html#gacc00eb7d6ae97bcc6759a78beff26226',1,'MYOHW_STATIC_ASSERT_SIZED(myohw_command_vibrate_t, 3):&#160;myohw.h'],['../group__myo__hardware.html#ga8e961ea27f49f836316cba8b71949679',1,'MYOHW_STATIC_ASSERT_SIZED(myohw_emg_data_t, 16):&#160;myohw.h']]]
+];
