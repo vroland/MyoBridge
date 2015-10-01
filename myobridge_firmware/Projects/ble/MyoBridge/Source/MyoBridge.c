@@ -42,7 +42,7 @@
 #define DEFAULT_MAX_SCAN_RES                  8
 
 /// Scan duration in ms
-#define DEFAULT_SCAN_DURATION                 4000
+#define DEFAULT_SCAN_DURATION                 2000
 
 /// Discovey mode (limited, general, all)
 #define DEFAULT_DISCOVERY_MODE                DEVDISC_MODE_ALL
@@ -54,7 +54,7 @@
 #define DEFAULT_DISCOVERY_WHITE_LIST          FALSE
 
 /// TRUE to use high scan duty cycle when creating link
-#define DEFAULT_LINK_HIGH_DUTY_CYCLE          TRUE
+#define DEFAULT_LINK_HIGH_DUTY_CYCLE          FALSE
 
 /// TRUE to use white list when creating link
 #define DEFAULT_LINK_WHITE_LIST               FALSE
@@ -85,6 +85,9 @@
 
 /// Default GAP bonding I/O capabilities
 #define DEFAULT_IO_CAPABILITIES               GAPBOND_IO_CAP_NO_INPUT_NO_OUTPUT
+
+/// Period of status notifications sent
+#define MYB_STATUS_NOTIFICATION_TIMER_PERIOD  200
 
 /*********************************************************************
  * GLOBAL VARIABLES
@@ -189,6 +192,7 @@ void MyoBridge_Init( uint8 task_id ) {
   // Setup GAP
   GAP_SetParamValue( TGAP_GEN_DISC_SCAN, DEFAULT_SCAN_DURATION );
   GAP_SetParamValue( TGAP_LIM_DISC_SCAN, DEFAULT_SCAN_DURATION );
+  GAP_SetParamValue( TGAP_CONN_PARAM_TIMEOUT, DEFAULT_UPDATE_MAX_CONN_INTERVAL); 
   
   // Setup the GAP Bond Manager
   {
@@ -219,6 +223,8 @@ void MyoBridge_Init( uint8 task_id ) {
   
   // Setup a delayed profile startup
   osal_set_event( MyoBridge_TaskID, MYB_START_DEVICE_EVT );
+  
+  osal_set_event( MyoBridge_TaskID, MYB_TIMER_EVT );
 }
   
 /**
@@ -355,7 +361,7 @@ uint16 MyoBridge_ProcessEvent( uint8 task_id, uint16 events ) {
       
     } else {
       
-      osal_set_event( MyoBridge_TaskID, MYB_START_DISCOVERY_EVT );
+      osal_set_event( MyoBridge_TaskID, MYB_START_DEVICE_EVT );
     }
     return (events ^ MYB_INIT_LINK_EVT);
   }
@@ -380,6 +386,14 @@ uint16 MyoBridge_ProcessEvent( uint8 task_id, uint16 events ) {
     
     setSystemStatus(MYB_STATUS_READY);
     return (events ^ MYB_GATT_READY_EVT);
+  }
+  
+  //periodically update the status
+  if (events & MYB_TIMER_EVT) {
+    
+    sendStatusNotification();
+    osal_start_timerEx( MyoBridge_TaskID, MYB_TIMER_EVT, MYB_STATUS_NOTIFICATION_TIMER_PERIOD );
+    return (events ^ MYB_TIMER_EVT);
   }
 
   // Discard unknown events
@@ -455,6 +469,7 @@ uint8 simpleBLECentralEventCB( gapCentralRoleEvent_t *pEvent ) {
   }
   
   case GAP_DEVICE_DISCOVERY_EVENT: {
+    
     // Copy results
     myoBridgeScanRes = pEvent->discCmpl.numDevs;
     osal_memcpy( discovered_devices, pEvent->discCmpl.pDevList,

@@ -16,6 +16,7 @@ var _myo_bridge_8c =
     [ "DEFAULT_SCAN_DURATION", "_myo_bridge_8c.html#a33fb8289dee931642c361e0694eae751", null ],
     [ "DEFAULT_UPDATE_MAX_CONN_INTERVAL", "_myo_bridge_8c.html#aaee4506db698c01c37c6899d2f28fca8", null ],
     [ "DEFAULT_UPDATE_MIN_CONN_INTERVAL", "_myo_bridge_8c.html#a3279e9dd48c8c676f9488a32041d855d", null ],
+    [ "MYB_STATUS_NOTIFICATION_TIMER_PERIOD", "_myo_bridge_8c.html#af37aa0f1563e8a1acd8dff402cbf6434", null ],
     [ "MyoBridge_Init", "_myo_bridge_8c.html#aef233203f82f29c75e8cb1d44a991362", null ],
     [ "MyoBridge_ProcessEvent", "_myo_bridge_8c.html#a87d5f7eceae342bf0bc8e770fc6f0b72", null ],
     [ "sendStatusNotification", "_myo_bridge_8c.html#a76ffdd962fa8edd52d8a96224a16e1c7", null ],

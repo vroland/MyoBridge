@@ -11,11 +11,9 @@ var searchData=
   ['command',['command',['../structmyohw__command__header__t.html#afcfdcce17dfacc24d96cee293c6678db',1,'myohw_command_header_t']]],
   ['commandchar',['commandChar',['../struct_myo_handles__t.html#acfa4355d34d2c2dab7a4cdccc91f840f',1,'MyoHandles_t']]],
   ['commandcharacteristic',['CommandCharacteristic',['../group__myo__hardware.html#gga39811b63b77dda16ed982f292f034867adf8a8c3c0522f4cd9a4821600b1744b1',1,'myohw.h']]],
-  ['concept_2emd',['Concept.md',['../_concept_8md.html',1,'']]],
   ['controlservice',['ControlService',['../group__myo__hardware.html#gga39811b63b77dda16ed982f292f034867ad33871e3d686667c50ab78c9d8ea961c',1,'myohw.h']]],
   ['controlserviceend',['controlServiceEnd',['../struct_myo_handles__t.html#a765d36e8bc6645d105c9f01919e212a6',1,'MyoHandles_t']]],
   ['controlservicestart',['controlServiceStart',['../struct_myo_handles__t.html#adc5019bbf45cfb2bd40e48e4bdf579ee',1,'MyoHandles_t']]],
   ['cserialpacketparser',['cSerialPacketParser',['../serial_interface_8c.html#a6cc39a230e265c37fe2bbf08f9bcaba3',1,'cSerialPacketParser(uint8 port, uint8 events):&#160;serialInterface.c'],['../serial_interface_8h.html#a6cc39a230e265c37fe2bbf08f9bcaba3',1,'cSerialPacketParser(uint8 port, uint8 events):&#160;serialInterface.c']]],
-  ['concept_20of_20myobridge',['Concept of MyoBridge',['../md__documentation_markdown_wiki__concept.html',1,'']]],
   ['control_20commands',['Control Commands',['../group__myohw__control__commands.html',1,'']]]
 ];

@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=2042205290
+Checksum=-1001849304
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -43,5 +43,8 @@ Count=0
 Stop timers on halt=0
 Leave target running=1
 [Aliases]
-Count=0
-SuppressDialog=0
+A0=_ "D:\myobridge_firmware\Components\hal\target\CC2540EB\_hal_uart_dma.c" ""
+A1=_ "D:\myobridge_firmware\Components\hal\target\CC2540EB\hal_uart.c" ""
+A2=_ "D:\myobridge_firmware\Projects\ble\MyoBridge\Source\MyoBridge_Main.c" ""
+Count=3
+SuppressDialog=1

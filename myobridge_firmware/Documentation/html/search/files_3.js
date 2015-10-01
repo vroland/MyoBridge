@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['osal_5fmyobridge_2ec',['OSAL_MyoBridge.c',['../_o_s_a_l___myo_bridge_8c.html',1,'']]]
+  ['serialinterface_2ec',['serialInterface.c',['../serial_interface_8c.html',1,'']]],
+  ['serialinterface_2eh',['serialInterface.h',['../serial_interface_8h.html',1,'']]]
 ];

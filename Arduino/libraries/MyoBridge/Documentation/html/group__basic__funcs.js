@@ -1,6 +1,6 @@
 var group__basic__funcs =
 [
-    [ "begin", "group__basic__funcs.html#gacec76acef44200c64be67d0bd76d42a1", null ],
+    [ "begin", "group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8", null ],
     [ "disablePoseData", "group__basic__funcs.html#gada461094adb8f2aa68bd29476b533c6c", null ],
     [ "disableSleep", "group__basic__funcs.html#gac67b7cf02b451c5bc94dccc3730a404d", null ],
     [ "enablePoseData", "group__basic__funcs.html#ga619d927ea7aca5333685717869db2f0d", null ],

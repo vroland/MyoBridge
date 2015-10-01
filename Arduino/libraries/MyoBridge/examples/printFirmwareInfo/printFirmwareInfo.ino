@@ -7,6 +7,13 @@ SoftwareSerial bridgeSerial(2,3);
 //initialize MyoBridge object with software serial connection
 MyoBridge bridge(bridgeSerial);
 
+//a function to inform us about the current state and the progess of the connection to the Myo.
+void printConnectionStatus(MyoConnectionStatus status) {
+	
+	//print the status constant as string
+	Serial.println(bridge.connectionStatusToString(status));
+}
+
 void setup() {
   //initialize both serial connections
   Serial.begin(115200);
@@ -14,7 +21,10 @@ void setup() {
 
   //wait until MyoBridge has found Myo and is connected. Make sure Myo is not connected to anything else and not in standby!
   Serial.println("Searching for Myo...");
-  bridge.begin();
+  
+  //initiate the connection with the status callback function
+  bridge.begin(printConnectionStatus);
+  
   Serial.println("connected!");
 
   Serial.print("Firmware Version: ");

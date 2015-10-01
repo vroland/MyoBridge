@@ -115,9 +115,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293">MyoBridge::MyoBridge</a> (Stream &amp;serialConnection)</td></tr>
 <tr class="memdesc:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_myo_bridge.html">MyoBridge</a> object.  <a href="#ga66d437ba20b8ffce1fcc1f2924a8c293">More...</a><br /></td></tr>
 <tr class="separator:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacec76acef44200c64be67d0bd76d42a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gacec76acef44200c64be67d0bd76d42a1">MyoBridge::begin</a> ()</td></tr>
-<tr class="memdesc:gacec76acef44200c64be67d0bd76d42a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the <a class="el" href="class_myo_bridge.html">MyoBridge</a> to connect to the MyoArmband and retrieve initial data.  <a href="#gacec76acef44200c64be67d0bd76d42a1">More...</a><br /></td></tr>
-<tr class="separator:gacec76acef44200c64be67d0bd76d42a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8">MyoBridge::begin</a> (void(*conConnectionEvent)(<a class="el" href="_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522">MyoConnectionStatus</a>)=NULL)</td></tr>
+<tr class="memdesc:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the <a class="el" href="class_myo_bridge.html">MyoBridge</a> to connect to the MyoArmband and retrieve initial data.  <a href="#ga362caf3b69a6979cd4e8ec4f7ed7fcd8">More...</a><br /></td></tr>
+<tr class="separator:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga085f3de45bc0667ea7263274874713ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga085f3de45bc0667ea7263274874713ca">MyoBridge::update</a> ()</td></tr>
 <tr class="memdesc:ga085f3de45bc0667ea7263274874713ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the communication with the <a class="el" href="class_myo_bridge.html">MyoBridge</a> module.  <a href="#ga085f3de45bc0667ea7263274874713ca">More...</a><br /></td></tr>
 <tr class="separator:ga085f3de45bc0667ea7263274874713ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,20 +167,27 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>These functions represent the basic functionality of the <a class="el" href="class_myo_bridge.html">MyoBridge</a> library and are designed to be easy to use. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gacec76acef44200c64be67d0bd76d42a1"></a>
+<a class="anchor" id="ga362caf3b69a6979cd4e8ec4f7ed7fcd8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a> MyoBridge::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">void(*)(<a class="el" href="_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522">MyoConnectionStatus</a>)&#160;</td>
+          <td class="paramname"><em>conConnectionEvent</em> = <code>NULL</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Wait for the <a class="el" href="class_myo_bridge.html">MyoBridge</a> to connect to the MyoArmband and retrieve initial data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conConnectionEvent</td><td>[optional] Callback function to deliver verbose information during during the connection process. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

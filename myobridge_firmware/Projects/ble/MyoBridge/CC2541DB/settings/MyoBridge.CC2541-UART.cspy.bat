@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "D:\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.general.xcl" --backend -f "D:\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.driver.xcl" 
+"D:\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "D:\MyoBridge\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.general.xcl" --backend -f "D:\MyoBridge\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "D:\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.general.xcl" "--debug_file=%~1" --backend -f "D:\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.driver.xcl" 
+"D:\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "D:\MyoBridge\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.general.xcl" "--debug_file=%~1" --backend -f "D:\MyoBridge\MyoBridge\myobridge_firmware\Projects\ble\MyoBridge\CC2541DB\settings\MyoBridge.CC2541-UART.driver.xcl" 
 
 @echo off 
 :end

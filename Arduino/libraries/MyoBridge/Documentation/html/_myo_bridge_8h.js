@@ -12,6 +12,16 @@ var _myo_bridge_8h =
       [ "ERR_INVALID_PACKET", "_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26a36e0745b01cab96525b0d51f9b7109ae", null ],
       [ "ERR_NO_PACKET", "_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26a2573d9bef98f9d6ddef12282caf0f81a", null ]
     ] ],
+    [ "MyoConnectionStatus", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522", [
+      [ "CONN_STATUS_UNKNOWN", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522a5f3761a8396f01bdcacb45623dba35ed", null ],
+      [ "CONN_STATUS_INIT", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522aab262cf8ca1185d9b87787073edf8698", null ],
+      [ "CONN_STATUS_SCANNING", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522a76269105343e89eb2c909f6ee1787034", null ],
+      [ "CONN_STATUS_CONNECTING", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522a9202b0dc4e01744bc15da3014ece5f7a", null ],
+      [ "CONN_STATUS_DISCOVERING", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522afa77d63ef667572f6e0446d351f3b4c0", null ],
+      [ "CONN_STATUS_BRIDGE_SETUP", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522acab5545b433b7e2cecea8f36e4c60cd6", null ],
+      [ "CONN_STATUS_READY", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522a351770c387a9606bbde492f93eb795ec", null ],
+      [ "CONN_STATUS_LOST", "_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522a5dbc4ce1e19d36050d0bd19d1ee4e0fd", null ]
+    ] ],
     [ "MyoEMGMode", "_myo_bridge_8h.html#ac6f991d21a293b773c554e8ad659885f", [
       [ "EMG_MODE_NONE", "_myo_bridge_8h.html#ac6f991d21a293b773c554e8ad659885fa150f89f9b7bdfa8b34b3e144adb6f6ef", null ],
       [ "EMG_MODE_SEND", "_myo_bridge_8h.html#ac6f991d21a293b773c554e8ad659885faef9f5b238f86d1b034fe05b54d007a5b", null ],

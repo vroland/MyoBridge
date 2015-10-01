@@ -20,6 +20,7 @@
 
 #include "Arduino.h"
 #include "myohw.h"
+#include "MyoBridgeTypes.h"
 
 #define RX_BUFFER_SIZE 128
 ///Size of the packet buffer. 23 BLE mesage bytes plus some serial overhead.
@@ -70,6 +71,18 @@ typedef enum {
 typedef myohw_imu_data_t MyoIMUData;
 typedef myohw_classifier_event_t MyoPoseData;
 
+/// Connection States
+typedef enum {
+	CONN_STATUS_UNKNOWN        = MYB_STATUS_UNKNOWN,			///< Status of the Bluetooth module is unknown.
+	CONN_STATUS_INIT           = MYB_STATUS_INIT,      			///< The Bluetooth module is initializing.
+	CONN_STATUS_SCANNING       = MYB_STATUS_SCANNING,      		///< The Bluetooth module is scanning for the Myo.
+	CONN_STATUS_CONNECTING     = MYB_STATUS_CONNECTING,     	///< The Bluetooth module is connecting to the Myo.
+	CONN_STATUS_DISCOVERING    = MYB_STATUS_DISCOVERING,    	///< The Bluetooth module is discovering the Myo's Bluetooth LE profile.
+	CONN_STATUS_BRIDGE_SETUP   = MYB_STATUS_DISCOVERING + 1,	///< MyoBridge sets up connection parameters and retrieves information.
+	CONN_STATUS_READY		   = MYB_STATUS_DISCOVERING + 2,	///< MyoBridge is ready to use!
+	CONN_STATUS_LOST		   = MYB_STATUS_DISCOVERING + 3,	///< MyoBridge lost the connection. You can't use this connection any more, unless you call begin() again.
+} MyoConnectionStatus;
+
 class MyoBridge {
   public:
     
@@ -90,8 +103,9 @@ class MyoBridge {
 	
 	/**
 	 * @brief Wait for the MyoBridge to connect to the MyoArmband and retrieve initial data.
+	 * @param conConnectionEvent [optional] Callback function to deliver verbose information during during the connection process.
 	 */
-	MyoBridgeSignal begin();
+	MyoBridgeSignal begin(void (*conConnectionEvent)(MyoConnectionStatus) = NULL);
 	
 	/**
 	 * @brief Update the communication with the MyoBridge module. Call as often as possible! The loop function is a appropiate position.
@@ -216,14 +230,19 @@ class MyoBridge {
 	 */
 	 
 	/**
-	 * send a command as defined in MyoBridgeTypes.h to the MyoBridge.
+	 * @brief send a command as defined in MyoBridgeTypes.h to the MyoBridge. Not recommended. Use doComfirmedWrite or doPersistentRead instead.
 	 */
 	MyoBridgeSignal sendCommand(uint8_t* pData);
 	
 	/**
-	 * Sends a command and waits for write confirmation.
+	 * Sends a command and waits for write confirmation, retrys if necessary.
 	 */
-	MyoBridgeSignal sendConfirmedCommand(uint8_t* pData);
+	MyoBridgeSignal doConfirmedWrite(uint8_t* pData);
+	
+	/**
+	 * Sends a read command and waits for data response, retrys if necessary.
+	 */
+	MyoBridgeSignal doPersistentRead(uint8_t* command);
 	 
 	/**
 	 * Enables BLE Notifications and Indications for all relevant characteristics.
@@ -249,6 +268,11 @@ class MyoBridge {
 	 * returns a string corresponding to the given pose constant.
 	 */
 	const char* poseToString(MyoPose pose);
+	
+	/**
+	 * returns a string corresponding to the given MyoConnectionStatus constant.
+	 */
+	const char* connectionStatusToString(MyoConnectionStatus status);
 	
 	/// @}
 	
@@ -285,12 +309,18 @@ class MyoBridge {
 	
 	///Is the MyoBridge connected with the Myo and ready to take commands?
 	bool connected;
+	///the more verbose connection status
+	MyoConnectionStatus connection_status;
 
     //callback functions
     void (*onIMUDataEvent)(MyoIMUData&);
     void (*onIMUMotionEvent)(MyoIMUMotion);
 	void (*onPoseEvent)(MyoPoseData&);
 	void (*onEMGDataEvent)(int8_t[8]);
+	/**
+	 * Callback function to deliver verbose information during during the connection process;
+	 */
+	void (*conConnectionEvent)(MyoConnectionStatus);
 	
     //utility
     void eraseBuffer(uint16_t bytes);

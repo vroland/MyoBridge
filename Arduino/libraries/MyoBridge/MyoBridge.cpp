@@ -28,6 +28,18 @@ const char* myo_pose_strings[] {
     "MYO_POSE_DOUBLE_TAP",
 };
 
+/// Connection States
+const char* myo_connection_state_strings[] {
+	"CONN_STATUS_UNKNOWN",
+	"CONN_STATUS_INIT",
+	"CONN_STATUS_SCANNING",
+	"CONN_STATUS_CONNECTING",
+	"CONN_STATUS_DISCOVERING",
+	"CONN_STATUS_BRIDGE_SETUP",
+	"CONN_STATUS_READY",
+	"CONN_STATUS_LOST",
+};
+
 MyoBridge::MyoBridge(Stream& serialConnection) {
 	myo = &serialConnection;
 	
@@ -37,6 +49,8 @@ MyoBridge::MyoBridge(Stream& serialConnection) {
 	this->onEMGDataEvent = NULL;
 	
 	connected = false;
+	connection_status = CONN_STATUS_UNKNOWN;
+	
 	new_packet_available = false;
 	result_available = false;
 	write_complete = false;
@@ -50,7 +64,9 @@ MyoBridge::MyoBridge(Stream& serialConnection) {
 	
 }
 
-MyoBridgeSignal MyoBridge::begin() {
+MyoBridgeSignal MyoBridge::begin(void (*conConnectionEvent)(MyoConnectionStatus)) {
+	
+	this->conConnectionEvent = conConnectionEvent;
 	
 	//begin() function exits only when the MyoBridge is ready to receive commands or a fatal error occurs
 	
@@ -66,15 +82,13 @@ MyoBridgeSignal MyoBridge::begin() {
 	
 	while (!done) {
 		
-		//receive serial data
-		status = receiveSerial();
+		//receive and process serial data
+		status = update();
+		
 		//exit on error
 		if (status == ERR_RX_BUFFER_OVERFLOW) {
 			return ERR_RX_BUFFER_OVERFLOW;
-		}
-		
-		//process the package data, if package arrived
-		status = processPackage();			
+		}		
 		
 		//exit when MyoBridge is ready
 		if (myobridge_status == MYB_STATUS_READY) {
@@ -82,73 +96,44 @@ MyoBridgeSignal MyoBridge::begin() {
 		}
 	}
 	
+	connection_status = CONN_STATUS_BRIDGE_SETUP;
+						
+	//call verbose callback function if available
+	if (conConnectionEvent != NULL) {
+		conConnectionEvent(connection_status);
+	}
+						
 	/////////////////// Read the Firmware Version /////////////////////////
+	
 	MYBReadCmd_t read_fw_cmd;
 	read_fw_cmd.hdr.cmd = MYB_CMD_READ_CHAR;
 	read_fw_cmd.index = MYO_CHAR_FIRMWARE;
 	
-	status = sendCommand((uint8_t*) &read_fw_cmd);
-	if (status != SUCCESS) {
-		return status;
-	}
-		
-	done = false;
-	while (!done) {
-		
-		//receive serial data
-		MyoBridgeSignal status = receiveSerial();
-		//exit on error
-		if (status == ERR_RX_BUFFER_OVERFLOW) {
-			return ERR_RX_BUFFER_OVERFLOW;
-		}
-		
-		//process the package data, if package arrived
-		status = processPackage();			
-		
-		//store and exit after firmware data response
-		if ((result_available) && (result_length == sizeof(myohw_fw_version_t))) {
-			memcpy(&firmware_info, &result_buffer[0], result_length);
-			done = true;
-		}
-	}
+	status = doPersistentRead((uint8_t*) &read_fw_cmd);
+	memcpy(&firmware_info, &result_buffer[0], result_length);
 	
 	/////////////////// Read the Firmware Info /////////////////////////
+	
 	MYBReadCmd_t read_info_cmd;
 	read_info_cmd.hdr.cmd = MYB_CMD_READ_CHAR;
 	read_info_cmd.index = MYO_CHAR_INFO;
 	
-	status = sendCommand((uint8_t*) &read_info_cmd);
-	if (status != SUCCESS) {
-		return status;
-	}
-		
-	done = false;
-	while (!done) {
-		
-		//receive serial data
-		MyoBridgeSignal status = receiveSerial();
-		//exit on error
-		if (status == ERR_RX_BUFFER_OVERFLOW) {
-			return ERR_RX_BUFFER_OVERFLOW;
-		}
-		
-		//process the package data, if package arrived
-		status = processPackage();			
-		
-		//store and exit after firmware data response
-		if ((result_available) && (result_length == sizeof(myohw_fw_info_t))) {
-			memcpy(&myo_info, &result_buffer[0], result_length);
-			done = true;
-		}
-	}
+	status = doPersistentRead((uint8_t*) &read_info_cmd);
+	memcpy(&myo_info, &result_buffer[0], result_length);
 	
 	///////////////////// Enable All Asynchronous Messages ///////////////////
 	
 	updateMode();
 	enableAllMessages();
 	
-	
 	connected = true;
+	
+	connection_status = CONN_STATUS_READY;
+						
+	//call verbose callback function if available
+	if (conConnectionEvent != NULL) {
+		conConnectionEvent(connection_status);
+	}
 	
 	return SUCCESS;
 }
@@ -179,11 +164,37 @@ MyoBridgeSignal MyoBridge::processPackage() {
 		
 		case MYB_RSP_STATUS: {
 			MYBStatusRsp_t* pRsp = (MYBStatusRsp_t*)&packet_buffer[0];
-
+			
 			//Is status valid?
 			if (pRsp->status <= MYB_STATUS_BUSY) {
 				uint8_t old_status = myobridge_status;
 				myobridge_status = pRsp->status;
+				
+				//status changed?
+				if (old_status != myobridge_status) {
+					
+					//is equivalent to MyoBridge system status until connected
+					if (myobridge_status < MYB_STATUS_READY) {
+						
+						//when connecting initially
+						if (!connected) {
+							connection_status = (MyoConnectionStatus)myobridge_status;
+							
+							//call verbose callback function if available
+							if (conConnectionEvent != NULL) {
+								conConnectionEvent(connection_status);
+							}
+						} else {
+							connection_status = CONN_STATUS_LOST;
+							
+							//call verbose callback function if available
+							if (conConnectionEvent != NULL) {
+								conConnectionEvent(connection_status);
+							}
+						}
+					}
+				}
+				
 			} else {
 				return ERR_INVALID_PACKET;
 			}
@@ -235,32 +246,85 @@ MyoBridgeSignal MyoBridge::processPackage() {
 	return SUCCESS;
 }
 
-MyoBridgeSignal MyoBridge::sendConfirmedCommand(uint8_t* pData) {
+/**
+ * Sends a command and waits for write confirmation, retrys if necessary.
+ */
+MyoBridgeSignal MyoBridge::doConfirmedWrite(uint8_t* pData) {
 	
-	sendCommand(pData);
-	//wait for the write response
+	
 	bool done = false;
-	
 	while (!done) {
 		
-		//receive serial data
-		MyoBridgeSignal status = receiveSerial();
+		sendCommand(pData);
+		//wait for the write response
 		
-		//exit on error
-		if (status == ERR_RX_BUFFER_OVERFLOW) {
-			return ERR_RX_BUFFER_OVERFLOW;
-		}
+		//time it which the command was issued
+		long time_cmd_started = millis();
 		
-		//process the package data, if package arrived
-		status = processPackage();			
-		
-		//exit when MyoBridge is ready
-		if ((write_complete) && (myobridge_status == MYB_STATUS_READY)) {
-			done = true;
+		//wait for answer or resend timeout
+		while (!done && (millis() - time_cmd_started < MYB_RETRY_TIMEOUT)) {
+			
+			//receive serial data
+			MyoBridgeSignal status = receiveSerial();
+			
+			//exit on error
+			if (status == ERR_RX_BUFFER_OVERFLOW) {
+				return ERR_RX_BUFFER_OVERFLOW;
+			}
+			
+			//process the package data, if package arrived
+			status = processPackage();			
+			
+			//exit when MyoBridge is ready
+			if ((write_complete) && (myobridge_status == MYB_STATUS_READY)) {
+				done = true;
+			}
 		}
 	}
+	
 	return SUCCESS;
 }
+
+/**
+ * Sends a read command and waits for data response, retrys if necessary.
+ */
+MyoBridgeSignal MyoBridge::doPersistentRead(uint8_t* command) {
+	
+	
+	bool done = false;
+	while (!done) {
+		
+		sendCommand(command);
+		//wait for the write response
+		
+		long time_cmd_started = millis();
+		
+		//wait for answer or resend timeout
+		while (!done && (millis() - time_cmd_started < MYB_RETRY_TIMEOUT)) {
+			
+			//receive serial data
+			MyoBridgeSignal status = receiveSerial();
+			
+			//exit on error
+			if (status == ERR_RX_BUFFER_OVERFLOW) {
+				return ERR_RX_BUFFER_OVERFLOW;
+			}
+			
+			//process the package data, if package arrived
+			status = processPackage();			
+			
+			//this is done when a result is available
+			if (result_available) {
+				
+				//data is now available in result buffer
+				done = true;
+			}
+		}
+	}
+	
+	return SUCCESS;
+}
+
 
 MyoBridgeSignal MyoBridge::sendCommand(uint8_t* pData) {
   uint8_t type = pData[0];
@@ -346,6 +410,7 @@ MyoBridgeSignal MyoBridge::receiveSerial() {
 		memcpy(&packet_buffer[0], &serialBuffer[start_index + 2], end_index - start_index - 2);
 		eraseBuffer(end_index + 1);
 		
+		
 		//announce the new packet
 		new_packet_available = true;
 		//there cannot be a result available for this packet
@@ -373,7 +438,7 @@ void MyoBridge::updateMode() {
     cmd.len = sizeof(myohw_command_set_mode_t);
     cmd.pData = (uint8_t*)&myo_mode;
     
-	sendConfirmedCommand((uint8_t*)&cmd);
+	doConfirmedWrite((uint8_t*)&cmd);
 }
 
 /**
@@ -382,7 +447,11 @@ void MyoBridge::updateMode() {
  */
 MyoBridgeSignal MyoBridge::setAllMessagesStatus(uint16_t cccb_status) {
 	
-	const int NUM_RELEVANT_CHARS = 8;
+	//we need a bitmask to decide whether we want to set notification or indication byte. setting both causes problems with data streams.
+	//1 means set indication flag, 0 means set notification flag. starting at MYO_CHAR_IMU_DATA with LSB.
+	uint8_t notification_indication_bitmask = 0b00000110;
+	
+	const int NUM_RELEVANT_CHARS = 7;
 	uint8_t relevant_characteristics[NUM_RELEVANT_CHARS] = {
 		MYO_CHAR_IMU_DATA,
 		MYO_CHAR_IMU_EVENTS,
@@ -391,7 +460,6 @@ MyoBridgeSignal MyoBridge::setAllMessagesStatus(uint16_t cccb_status) {
 		MYO_CHAR_EMG_1,
 		MYO_CHAR_EMG_2,
 		MYO_CHAR_EMG_3,
-		MYO_CHAR_BATTERY_LEVEL,
 	};
 	
 	MyoBridgeSignal status;
@@ -402,31 +470,11 @@ MyoBridgeSignal MyoBridge::setAllMessagesStatus(uint16_t cccb_status) {
 		MYBAsyncStatusCmd_t cmd;
 		cmd.hdr.cmd = MYB_CMD_SET_ASYNC_STATUS;
 		cmd.index = relevant_characteristics[i];
-		//enable both notifications and indications
-		cmd.status = cccb_status;
 		
-		status = sendCommand((uint8_t*) &cmd);
+		//enable indications or notifications based on bitmask, when cccb is 3, set 0 otherwise.
+		cmd.status = cccb_status & 1 << (bool)(notification_indication_bitmask & (1 << i));
 		
-		//wait for the write response
-		bool done = false;
-		
-		while (!done) {
-			
-			//receive serial data
-			status = receiveSerial();
-			//exit on error
-			if (status == ERR_RX_BUFFER_OVERFLOW) {
-				return ERR_RX_BUFFER_OVERFLOW;
-			}
-			
-			//process the package data, if package arrived
-			status = processPackage();			
-			
-			//exit when MyoBridge is ready
-			if ((write_complete) && (myobridge_status == MYB_STATUS_READY)) {
-				done = true;
-			}
-		}
+		doConfirmedWrite((uint8_t*)&cmd);
 	}
 	
 	return SUCCESS;
@@ -462,7 +510,7 @@ void MyoBridge::unlockMyo() {
     cmd.len = sizeof(myohw_command_unlock_t);
     cmd.pData = (uint8_t*)&unlock_cmd;
 	
-	sendConfirmedCommand((uint8_t*)&cmd);
+	doConfirmedWrite((uint8_t*)&cmd);
 }
 
 /**
@@ -480,7 +528,7 @@ void MyoBridge::lockMyo() {
     cmd.len = sizeof(myohw_command_unlock_t);
     cmd.pData = (uint8_t*)&unlock_cmd;
 	
-	sendConfirmedCommand((uint8_t*)&cmd);
+	doConfirmedWrite((uint8_t*)&cmd);
 }
 
 /**
@@ -498,7 +546,7 @@ void MyoBridge::disableSleep() {
     cmd.len = sizeof(myohw_command_set_sleep_mode_t);
     cmd.pData = (uint8_t*)&sleep_mode_cmd;
 	
-	sendConfirmedCommand((uint8_t*)&cmd);
+	doConfirmedWrite((uint8_t*)&cmd);
 }
 
 /**
@@ -516,7 +564,7 @@ void MyoBridge::enableSleep() {
     cmd.len = sizeof(myohw_command_set_sleep_mode_t);
     cmd.pData = (uint8_t*)&sleep_mode_cmd;
 	
-	sendConfirmedCommand((uint8_t*)&cmd);
+	doConfirmedWrite((uint8_t*)&cmd);
 }
 	
 
@@ -547,7 +595,6 @@ void MyoBridge::setPoseEventCallBack(void (*onPoseEvent)(MyoPoseData&)) {
 void MyoBridge::setEMGDataCallBack(void (*onEMGDataEvent)(int8_t[8])) {
 	this->onEMGDataEvent = onEMGDataEvent;
 }
-	
 
 /**
  * @brief Get the major number of the firmware version.
@@ -640,3 +687,11 @@ const char* MyoBridge::poseToString(MyoPose pose) {
 		return myo_pose_strings[pose];
 	}
 }
+
+/**
+ * returns a string corresponding to the given MyoConnectionStatus constant.
+ */
+const char* MyoBridge::connectionStatusToString(MyoConnectionStatus status) {
+	return myo_connection_state_strings[status];
+}
+	

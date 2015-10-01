@@ -2,6 +2,7 @@ var searchData=
 [
   ['myobridgesignal',['MyoBridgeSignal',['../_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26',1,'MyoBridge.h']]],
   ['myocharacteristicindex_5ft',['MyoCharacteristicIndex_t',['../group__gatt__indices.html#gac9c0ba99b06c050e5a4e8df4c7f8c506',1,'MyoBridgeTypes.h']]],
+  ['myoconnectionstatus',['MyoConnectionStatus',['../_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522',1,'MyoBridge.h']]],
   ['myoemgmode',['MyoEMGMode',['../_myo_bridge_8h.html#ac6f991d21a293b773c554e8ad659885f',1,'MyoBridge.h']]],
   ['myohw_5farm_5ft',['myohw_arm_t',['../group__myo__hardware.html#ga2c996a9b9c509a0cad2dab382c56925b',1,'myohw.h']]],
   ['myohw_5fclassifier_5fevent_5ftype_5ft',['myohw_classifier_event_type_t',['../group__myo__hardware.html#ga8651af039182899b701b083eb1f1ef47',1,'myohw.h']]],

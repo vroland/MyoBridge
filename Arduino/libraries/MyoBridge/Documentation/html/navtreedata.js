@@ -29,8 +29,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_myo_bridge_8cpp.html",
-"group__myo__hardware.html#gga1a0aba8c0ae99212d418e329c2a99d6fa03ac80c68cd6d0f0213a118ef3d3d795",
-"struct_m_y_o_h_w___p_a_c_k_e_d.html#a80303225b035b01bb28ed947bbd56e09"
+"group__myo__hardware.html#gga12d65c4fae34c60d2f8a9eea7958dbb7ac59bb2c82d144d8367c781e143b43896",
+"struct_m_y_o_h_w___p_a_c_k_e_d.html#a3b40747df7a523ea7d9cfa15efcaff3a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

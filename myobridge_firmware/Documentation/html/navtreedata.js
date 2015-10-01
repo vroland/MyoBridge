@@ -1,8 +1,7 @@
 var NAVTREE =
 [
   [ "MyoBridge Firmware", "index.html", [
-    [ "Concept of MyoBridge", "md__documentation_markdown_wiki__concept.html", null ],
-    [ "Getting Started", "getting_started.html", null ],
+    [ "MyoBridge", "md__documentation_markdown_wiki__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

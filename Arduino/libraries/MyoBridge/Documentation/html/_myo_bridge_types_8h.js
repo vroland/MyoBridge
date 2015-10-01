@@ -5,6 +5,7 @@ var _myo_bridge_types_8h =
     [ "MYB_CMD_READ_CHAR", "group__myb__serial__commands.html#ga1675e35c97539c3c8c817f1369ca81d7", null ],
     [ "MYB_CMD_SET_ASYNC_STATUS", "group__myb__serial__commands.html#ga3a1484cf9807d38ac5ba324720155647", null ],
     [ "MYB_CMD_WRITE_CHAR", "group__myb__serial__commands.html#ga83095f5a0c3bd1553a2186467c250f02", null ],
+    [ "MYB_RETRY_TIMEOUT", "group__myb__consts.html#gabd509c5dcab58004ca4ee0d647817dfb", null ],
     [ "MYB_RSP_PING", "group__myb__serial__types.html#ga68193d58db29516145d92b400f6fe1d7", null ],
     [ "MYB_RSP_STATUS", "group__myb__serial__types.html#gaac43e6c5670c29cfe4e438f6229fa6da", null ],
     [ "MYB_RSP_VALUE", "group__myb__serial__types.html#gab1b328efdcf130a1091ada29f77cfce4", null ],

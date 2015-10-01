@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['begin',['begin',['../group__basic__funcs.html#gacec76acef44200c64be67d0bd76d42a1',1,'MyoBridge']]]
+  ['begin',['begin',['../group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8',1,'MyoBridge']]]
 ];

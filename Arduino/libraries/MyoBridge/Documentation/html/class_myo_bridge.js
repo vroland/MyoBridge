@@ -1,10 +1,13 @@
 var class_myo_bridge =
 [
     [ "MyoBridge", "group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293", null ],
-    [ "begin", "group__basic__funcs.html#gacec76acef44200c64be67d0bd76d42a1", null ],
+    [ "begin", "group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8", null ],
+    [ "connectionStatusToString", "group__utility__funcs.html#gacba3fc3a629cfe244feff21f521bff00", null ],
     [ "disableAllMessages", "group__advanced__funcs.html#ga1d5259d0651474d18909eb2f5c24b36b", null ],
     [ "disablePoseData", "group__basic__funcs.html#gada461094adb8f2aa68bd29476b533c6c", null ],
     [ "disableSleep", "group__basic__funcs.html#gac67b7cf02b451c5bc94dccc3730a404d", null ],
+    [ "doConfirmedWrite", "group__advanced__funcs.html#ga9a75b6b7aa9889db10111fb716e91b27", null ],
+    [ "doPersistentRead", "group__advanced__funcs.html#gaeb246fdfa656de14bd345d80762f54eb", null ],
     [ "enableAllMessages", "group__advanced__funcs.html#ga52ae472dcf995d2806e7eb190f4b214b", null ],
     [ "enablePoseData", "group__basic__funcs.html#ga619d927ea7aca5333685717869db2f0d", null ],
     [ "enableSleep", "group__basic__funcs.html#gae9f63a6013004c894fe365343933ba61", null ],
@@ -17,7 +20,6 @@ var class_myo_bridge =
     [ "lockMyo", "group__basic__funcs.html#gad0dae46cd6832633fd24681131d504a6", null ],
     [ "poseToString", "group__utility__funcs.html#ga280b0dfc78d0609ac8e431f4b1764902", null ],
     [ "sendCommand", "group__advanced__funcs.html#ga38ee56d816b6016b2eefc3581c6eb1ee", null ],
-    [ "sendConfirmedCommand", "group__advanced__funcs.html#ga69b60ac309ea1e0170484325d63a04a7", null ],
     [ "setEMGDataCallBack", "group__callback__funcs.html#gab321a2fe2fc598fdc4b9c12a6cf8d100", null ],
     [ "setEMGMode", "group__basic__funcs.html#ga6d564f122e4fd5e3f3d968826ad21359", null ],
     [ "setIMUDataCallBack", "group__callback__funcs.html#ga03b432c626750b5a9c001c57537aba3b", null ],

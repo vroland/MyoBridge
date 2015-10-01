@@ -30,6 +30,9 @@
 /// values, states, etc. Some are also used in serial communication.
 /// @{
 
+/// Time in milliseconds a request is resent if no answer is received
+#define MYB_RETRY_TIMEOUT							  300
+
 /// @defgroup myb_system_status System Status Constants
 /// Describes the current status of the application, can be notified via the serial interface.
 /// @{

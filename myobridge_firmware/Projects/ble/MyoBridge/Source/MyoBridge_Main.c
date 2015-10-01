@@ -27,6 +27,8 @@
  * 
  * This project is developed for research and educational purposes at Victoria University of Wellington, 
  * School of Engineering and Computer Science.
+ *
+ * For more information, visit the GitHub wiki: https://github.com/vroland/MyoBridge/wiki
  */
 
 

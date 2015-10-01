@@ -6,7 +6,6 @@ var searchData=
   ['sample1',['sample1',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#a5e856ee4084de31a0a5b3a79ae2ddc2c',1,'MYOHW_PACKED']]],
   ['sample2',['sample2',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#a54cee94f4078855a841d86721ce2b97d',1,'MYOHW_PACKED']]],
   ['sendcommand',['sendCommand',['../group__advanced__funcs.html#ga38ee56d816b6016b2eefc3581c6eb1ee',1,'MyoBridge']]],
-  ['sendconfirmedcommand',['sendConfirmedCommand',['../group__advanced__funcs.html#ga69b60ac309ea1e0170484325d63a04a7',1,'MyoBridge']]],
   ['serial_5fnumber',['serial_number',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#a4677b6821eb7fce53294d0fa02cd3b74',1,'MYOHW_PACKED']]],
   ['setemgdatacallback',['setEMGDataCallBack',['../group__callback__funcs.html#gab321a2fe2fc598fdc4b9c12a6cf8d100',1,'MyoBridge']]],
   ['setemgmode',['setEMGMode',['../group__basic__funcs.html#ga6d564f122e4fd5e3f3d968826ad21359',1,'MyoBridge']]],

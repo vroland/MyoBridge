@@ -104,32 +104,16 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">MyoBridge Library Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Instaling the <a class="el" href="class_myo_bridge.html">MyoBridge</a> Arduino Library</h2>
-<p>The <a class="el" href="class_myo_bridge.html">MyoBridge</a> library can be installed like any other Arduino library. Just copy the "MyoBridge" folder in your library directory in your sketchbook.</p>
-<h2>Hardware Setup</h2>
-<p>Set up your <a class="el" href="class_myo_bridge.html">MyoBridge</a> module as described in the <a class="el" href="class_myo_bridge.html">MyoBridge</a> Firmware wiki. For use with the Arduino, you just need 4 pins:</p>
-<ul>
-<li>VCC The power supply for the Bluetooth module. Be sure to <b>supply only 3.3V!</b></li>
-<li>GND The ground of the bluetooth module. Connect it with the Ground of your Arduino.</li>
-<li>TX The transmit data pin of the Bluetooth module. Connect it to the RX pin of your serial port.</li>
-<li>RX The receive data pin of the Bluetooth module. Only connect it through a <b>voltage devider</b> with your Arduino!</li>
-</ul>
-<p>The library examples use a software serial connection with this setup:</p>
+<div class="textblock"><p>A high-level Arduino library and custom firmware for the HM-11 (CC2541 SoC) to enable direct Myo Armband and Arduino communication. Please visit the <a href="https://github.com/vroland/MyoBridge/wiki">wiki</a> for more information.</p>
+<h1>Concept of <a class="el" href="class_myo_bridge.html">MyoBridge</a></h1>
 <div class="image">
-<img src="../images/simple_hw_setup_bb.png" />
+<img src="https://raw.githubusercontent.com/wiki/vroland/MyoBridge/images/wiki/mbconcept.png"  alt="MyoBridge Concept"/>
 </div>
-<h2>Load an Example Sketch</h2>
-<p>Restart your Arduino IDE and go to File-&gt;Examples-&gt;<a class="el" href="class_myo_bridge.html">MyoBridge</a> and open the printFirmwareInfo example. Upload it to your Arduino and open a serial monitor. You should now see a message saying:</p>
-<p><code>Searching for Myo...</code></p>
-<p>Now make sure your Myo is not connected to your computer any more. Either end all Myo Connect processes, or just remove the dongle. When the led bar at the bottom of the main segment of your myo lights blue, Myo is connected. Now the <a class="el" href="class_myo_bridge.html">MyoBridge</a> needs some time to discover the Bluetooth profile of the Myo, this will take several seconds.</p>
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;connected!</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;Firmware Version: 1.5.1931</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Hardware Revision: 2</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;Hardware Address: 0xA6918C33A5F4</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Unlock Pose: MYO_POSE_DOUBLE_TAP</div>
-</div><!-- fragment --><p>This message should appear on your serial monitor after a few seconds, some information about your Myo. If not, try to reset the Bluetooth module (just disconnect it from power) and/or your Arduino.</p>
-<p><em>Congratulations, <a class="el" href="class_myo_bridge.html">MyoBridge</a> is now ready to use for your own projects!</em></p>
-<p>You can also try the other examples delivered with the <a class="el" href="class_myo_bridge.html">MyoBridge</a> library. </p>
+<p>The Myo Gesture Control Armband features gesture recognition, motion tracking and muscular activity measurement. This data is very useful in various applications, since sensor data and events are sent wirelessly through a Bluetooth Low Energy connection to a host device and no complex wiring is required. Especially embedded systems can profit from the portability of the device, like the Arduino platform. Unfortunately, most BLE hardware has a very limited feature set, none of the available BLE modules could directly connect to the Myo Armband out of the box.</p>
+<p>But this can be solved by developing a custom firmware for these modules, which then provides access to the Myo data and delivers it to another device, like an Arduino. The <b><a class="el" href="class_myo_bridge.html">MyoBridge</a> Firmware</b> fits exactly this purpose. It is a custom firmware for the HM-11 BLE Module, which uses the Texas Instruments CC2541 Bluetooth LE System on a Chip.</p>
+<p>When the <a class="el" href="class_myo_bridge.html">MyoBridge</a> is connected to a Myo Gesture Control Armband, the Arduino can send commands or receive sensor data from the Myo using the <a class="el" href="class_myo_bridge.html">MyoBridge</a> library. The communication between HM-11/MyoBridge and Arduino uses a simple two-wire serial connection, while the HM-11 module connects directly to the Myo Armband.</p>
+<p><b>When using the Arduino library, you can easily read data from the Myo, without the need of any intermediate PC or phone.</b></p>
+<p>You want to use the <a class="el" href="class_myo_bridge.html">MyoBridge</a> Firmware? <a href="https://github.com/vroland/MyoBridge/wiki/Getting-Started-with-MyoBridge-Firmware">Get Started!</a> </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

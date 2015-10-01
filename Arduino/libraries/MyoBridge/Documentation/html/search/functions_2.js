@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['enableallmessages',['enableAllMessages',['../group__advanced__funcs.html#ga52ae472dcf995d2806e7eb190f4b214b',1,'MyoBridge']]],
-  ['enableposedata',['enablePoseData',['../group__basic__funcs.html#ga619d927ea7aca5333685717869db2f0d',1,'MyoBridge']]],
-  ['enablesleep',['enableSleep',['../group__basic__funcs.html#gae9f63a6013004c894fe365343933ba61',1,'MyoBridge']]]
+  ['disableallmessages',['disableAllMessages',['../group__advanced__funcs.html#ga1d5259d0651474d18909eb2f5c24b36b',1,'MyoBridge']]],
+  ['disableposedata',['disablePoseData',['../group__basic__funcs.html#gada461094adb8f2aa68bd29476b533c6c',1,'MyoBridge']]],
+  ['disablesleep',['disableSleep',['../group__basic__funcs.html#gac67b7cf02b451c5bc94dccc3730a404d',1,'MyoBridge']]],
+  ['doconfirmedwrite',['doConfirmedWrite',['../group__advanced__funcs.html#ga9a75b6b7aa9889db10111fb716e91b27',1,'MyoBridge']]],
+  ['dopersistentread',['doPersistentRead',['../group__advanced__funcs.html#gaeb246fdfa656de14bd345d80762f54eb',1,'MyoBridge']]]
 ];

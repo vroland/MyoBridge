@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gettingstarted_2emd',['gettingStarted.md',['../getting_started_8md.html',1,'']]]
+  ['osal_5fmyobridge_2ec',['OSAL_MyoBridge.c',['../_o_s_a_l___myo_bridge_8c.html',1,'']]]
 ];
