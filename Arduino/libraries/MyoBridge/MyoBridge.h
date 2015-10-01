@@ -98,8 +98,11 @@ class MyoBridge {
 	 * to control and access the data provided my the MyoArmband.
 	 *
 	 * @param serialConnection The serial connection to use. Can be software serial.
+	 * @param resetPin [optional] When this pin is specified, it is used to reset the Bluetooth
+	 * module if it does not behave or respond correctly. It must be connected to the module's 
+	 * reset pin and cannot be used for other purposes.
 	 */
-	MyoBridge(Stream& serialConnection);
+	MyoBridge(Stream& serialConnection, byte resetPin=255);
 	
 	/**
 	 * @brief Wait for the MyoBridge to connect to the MyoArmband and retrieve initial data.
@@ -146,6 +149,10 @@ class MyoBridge {
 	 */
 	MyoPose getUnlockPose();
 	
+	/**
+	 * @brief Get the current battery level of the Myo Armband. Values in percent from 0-100.
+	 */
+	byte getBatteryLevel();
 	
 	
 	/**
@@ -187,6 +194,12 @@ class MyoBridge {
 	 * @brief enables sleep mode. Myo goes to leep if not synced and not moving.
 	 */
 	void enableSleep();
+	
+	/**
+	 * @brief send a vibration command to the Myo.
+	 * @param type Vibration type. 0: None, 1: Short, 2: Medium, 3: Long
+	 */
+	void vibrate(byte type);
 	
 	/// @}
 
@@ -230,14 +243,17 @@ class MyoBridge {
 	 */
 	 
 	/**
-	 * @brief send a command as defined in MyoBridgeTypes.h to the MyoBridge. Not recommended. Use doComfirmedWrite or doPersistentRead instead.
+	 * @brief Not recommended! Use doComfirmedWrite or doPersistentRead instead. 
+	 * send a command as defined in MyoBridgeTypes.h to the MyoBridge.  
+	 * using this function without waiting for the write response way break
+	 * other doConfirmedWrite() calls, because they receive the old response.
 	 */
 	MyoBridgeSignal sendCommand(uint8_t* pData);
 	
 	/**
 	 * Sends a command and waits for write confirmation, retrys if necessary.
 	 */
-	MyoBridgeSignal doConfirmedWrite(uint8_t* pData);
+	MyoBridgeSignal doConfirmedWrite(uint8_t* pData, bool retry = true);
 	
 	/**
 	 * Sends a read command and waits for data response, retrys if necessary.
@@ -311,6 +327,13 @@ class MyoBridge {
 	bool connected;
 	///the more verbose connection status
 	MyoConnectionStatus connection_status;
+	/// The time the Bluetooth Module began scanning for the Myo Armband, used to determine if it has timed out.
+	long scan_start_time;
+	/// The time the last serial package was received, used to reset the Module after a timeout.
+	long last_package_received_time;
+	
+	/// The Pin used for resetting the bluetooth module.
+	uint8_t reset_pin;
 
     //callback functions
     void (*onIMUDataEvent)(MyoIMUData&);

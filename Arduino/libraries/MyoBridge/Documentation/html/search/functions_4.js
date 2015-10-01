@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['getbatterylevel',['getBatteryLevel',['../group__basic__funcs.html#ga68e5ac3315ac5e8f4677eaafdb088bb7',1,'MyoBridge']]],
   ['getfirmwaremajor',['getFirmwareMajor',['../group__basic__funcs.html#ga356267611fd901901a70413f45e192e0',1,'MyoBridge']]],
   ['getfirmwareminor',['getFirmwareMinor',['../group__basic__funcs.html#gaf26706bf32f6cab745b5bef9b968c0b7',1,'MyoBridge']]],
   ['getfirmwarepatch',['getFirmwarePatch',['../group__basic__funcs.html#gafc70a718c92b0162fd43d10ffc1fbe5c',1,'MyoBridge']]],

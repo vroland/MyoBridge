@@ -8,14 +8,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-  $(document).ready(initResizable);
-  $(window).load(resizeHeight);
-</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -71,20 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){initNavTree('group__basic__funcs.html','');});
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -112,9 +90,9 @@ $(document).ready(function(){initNavTree('group__basic__funcs.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293">MyoBridge::MyoBridge</a> (Stream &amp;serialConnection)</td></tr>
-<tr class="memdesc:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_myo_bridge.html">MyoBridge</a> object.  <a href="#ga66d437ba20b8ffce1fcc1f2924a8c293">More...</a><br /></td></tr>
-<tr class="separator:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0c33d21c91c3d25255a52cde47e925d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gad0c33d21c91c3d25255a52cde47e925d">MyoBridge::MyoBridge</a> (Stream &amp;serialConnection, byte resetPin=255)</td></tr>
+<tr class="memdesc:gad0c33d21c91c3d25255a52cde47e925d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_myo_bridge.html">MyoBridge</a> object.  <a href="#gad0c33d21c91c3d25255a52cde47e925d">More...</a><br /></td></tr>
+<tr class="separator:gad0c33d21c91c3d25255a52cde47e925d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8">MyoBridge::begin</a> (void(*conConnectionEvent)(<a class="el" href="_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522">MyoConnectionStatus</a>)=NULL)</td></tr>
 <tr class="memdesc:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the <a class="el" href="class_myo_bridge.html">MyoBridge</a> to connect to the MyoArmband and retrieve initial data.  <a href="#ga362caf3b69a6979cd4e8ec4f7ed7fcd8">More...</a><br /></td></tr>
 <tr class="separator:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +117,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gab850c1decfbb452766f8e17e9c2599e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#ab159adc849532c0d05220f3018da7bec">MyoPose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gab850c1decfbb452766f8e17e9c2599e9">MyoBridge::getUnlockPose</a> ()</td></tr>
 <tr class="memdesc:gab850c1decfbb452766f8e17e9c2599e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pose used for unlocking.  <a href="#gab850c1decfbb452766f8e17e9c2599e9">More...</a><br /></td></tr>
 <tr class="separator:gab850c1decfbb452766f8e17e9c2599e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68e5ac3315ac5e8f4677eaafdb088bb7"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga68e5ac3315ac5e8f4677eaafdb088bb7">MyoBridge::getBatteryLevel</a> ()</td></tr>
+<tr class="memdesc:ga68e5ac3315ac5e8f4677eaafdb088bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current battery level of the Myo Armband.  <a href="#ga68e5ac3315ac5e8f4677eaafdb088bb7">More...</a><br /></td></tr>
+<tr class="separator:ga68e5ac3315ac5e8f4677eaafdb088bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2e522738fcd9353c2e2d55a4894b6fad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga2e522738fcd9353c2e2d55a4894b6fad">MyoBridge::setIMUMode</a> (<a class="el" href="_myo_bridge_8h.html#a54c22dd129ffbd60f8f85c70c2ed68b6">MyoIMUMode</a> mode)</td></tr>
 <tr class="memdesc:ga2e522738fcd9353c2e2d55a4894b6fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the IMU data mode.  <a href="#ga2e522738fcd9353c2e2d55a4894b6fad">More...</a><br /></td></tr>
 <tr class="separator:ga2e522738fcd9353c2e2d55a4894b6fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,6 +144,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gae9f63a6013004c894fe365343933ba61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gae9f63a6013004c894fe365343933ba61">MyoBridge::enableSleep</a> ()</td></tr>
 <tr class="memdesc:gae9f63a6013004c894fe365343933ba61"><td class="mdescLeft">&#160;</td><td class="mdescRight">enables sleep mode.  <a href="#gae9f63a6013004c894fe365343933ba61">More...</a><br /></td></tr>
 <tr class="separator:gae9f63a6013004c894fe365343933ba61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga023c11b4bead1fd3f512ad101fb25a93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga023c11b4bead1fd3f512ad101fb25a93">MyoBridge::vibrate</a> (byte type)</td></tr>
+<tr class="memdesc:ga023c11b4bead1fd3f512ad101fb25a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a vibration command to the Myo.  <a href="#ga023c11b4bead1fd3f512ad101fb25a93">More...</a><br /></td></tr>
+<tr class="separator:ga023c11b4bead1fd3f512ad101fb25a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>These functions represent the basic functionality of the <a class="el" href="class_myo_bridge.html">MyoBridge</a> library and are designed to be easy to use. </p>
@@ -259,6 +243,24 @@ Functions</h2></td></tr>
 <p>enables sleep mode. </p>
 <p>enables sleep mode</p>
 <p>Myo goes to leep if not synced and not moving. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga68e5ac3315ac5e8f4677eaafdb088bb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte MyoBridge::getBatteryLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current battery level of the Myo Armband. </p>
+<p>Values in percent from 0-100. </p>
 
 </div>
 </div>
@@ -389,7 +391,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga66d437ba20b8ffce1fcc1f2924a8c293"></a>
+<a class="anchor" id="gad0c33d21c91c3d25255a52cde47e925d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -397,8 +399,18 @@ Functions</h2></td></tr>
           <td class="memname">MyoBridge::MyoBridge </td>
           <td>(</td>
           <td class="paramtype">Stream &amp;&#160;</td>
-          <td class="paramname"><em>serialConnection</em></td><td>)</td>
+          <td class="paramname"><em>serialConnection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">byte&#160;</td>
+          <td class="paramname"><em>resetPin</em> = <code>255</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -408,6 +420,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serialConnection</td><td>The serial connection to use. Can be software serial. </td></tr>
+    <tr><td class="paramname">resetPin</td><td>[optional] When this pin is specified, it is used to reset the Bluetooth module if it does not behave or respond correctly. It must be connected to the module's reset pin and cannot be used for other purposes. </td></tr>
   </table>
   </dd>
 </dl>
@@ -485,15 +498,36 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-</div><!-- contents -->
-</div><!-- doc-content -->
-<!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
-  </ul>
+<a class="anchor" id="ga023c11b4bead1fd3f512ad101fb25a93"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MyoBridge::vibrate </td>
+          <td>(</td>
+          <td class="paramtype">byte&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a vibration command to the Myo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Vibration type. 0: None, 1: Short, 2: Medium, 3: Long </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
 </body>
 </html>

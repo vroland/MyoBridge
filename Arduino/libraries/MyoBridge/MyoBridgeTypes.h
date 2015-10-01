@@ -32,6 +32,8 @@
 
 /// Time in milliseconds a request is resent if no answer is received
 #define MYB_RETRY_TIMEOUT							  300
+/// Time in milliseconds the MyoBridge is allowed to scan until the library resets it, if a reset pin is specified.
+#define MYB_MODULE_CONNECT_TIMEOUT					  2000
 
 /// @defgroup myb_system_status System Status Constants
 /// Describes the current status of the application, can be notified via the serial interface.

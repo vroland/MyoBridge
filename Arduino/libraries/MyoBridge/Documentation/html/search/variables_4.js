@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gyroscope',['gyroscope',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#a25898aa464d54419200cf89349d54c58',1,'MYOHW_PACKED']]]
+  ['emg_5fmode',['emg_mode',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#a2f3600af28c9fc325e0ff51979bcfa23',1,'MYOHW_PACKED']]]
 ];

@@ -40,13 +40,15 @@ const char* myo_connection_state_strings[] {
 	"CONN_STATUS_LOST",
 };
 
-MyoBridge::MyoBridge(Stream& serialConnection) {
+MyoBridge::MyoBridge(Stream& serialConnection, byte resetPin) {
 	myo = &serialConnection;
 	
 	this->onIMUDataEvent = NULL;
 	this->onIMUMotionEvent = NULL;
 	this->onPoseEvent = NULL;
 	this->onEMGDataEvent = NULL;
+	
+	this->reset_pin = resetPin;
 	
 	connected = false;
 	connection_status = CONN_STATUS_UNKNOWN;
@@ -62,9 +64,17 @@ MyoBridge::MyoBridge(Stream& serialConnection) {
 	myo_mode.imu_mode = myohw_imu_mode_none;
 	myo_mode.classifier_mode = myohw_classifier_mode_disabled;
 	
+	scan_start_time = 0;
+	last_package_received_time = 0;
 }
 
 MyoBridgeSignal MyoBridge::begin(void (*conConnectionEvent)(MyoConnectionStatus)) {
+	
+	//set up the reset pin, if available
+	if (reset_pin < 255) {
+		pinMode(reset_pin, OUTPUT);
+		digitalWrite(reset_pin, HIGH);
+	}
 	
 	this->conConnectionEvent = conConnectionEvent;
 	
@@ -149,7 +159,17 @@ MyoBridgeSignal MyoBridge::update() {
 	
 	//process the package data, if package arrived
 	status = processPackage();	
-
+	
+	//reset if we dont receive updates anymore and the reset pin is defined
+	if ((reset_pin < 255) && (millis() - last_package_received_time > MYB_MODULE_CONNECT_TIMEOUT)) {
+		
+		digitalWrite(reset_pin, LOW);
+		delay(5);
+		digitalWrite(reset_pin, HIGH);
+		
+		last_package_received_time = millis();
+	}
+				
 	return status;
 }
 
@@ -170,8 +190,24 @@ MyoBridgeSignal MyoBridge::processPackage() {
 				uint8_t old_status = myobridge_status;
 				myobridge_status = pRsp->status;
 				
+				//reset if the reset pin is defined and the Bluetooth module spends more time than allowed scanning
+				if ((reset_pin < 255) && (millis() - scan_start_time > MYB_MODULE_CONNECT_TIMEOUT) 
+					&& (myobridge_status == MYB_STATUS_SCANNING) && (connection_status != CONN_STATUS_LOST)) {
+					
+					digitalWrite(reset_pin, LOW);
+					delay(5);
+					digitalWrite(reset_pin, HIGH);
+					
+					scan_start_time = millis();
+				}
+				
 				//status changed?
 				if (old_status != myobridge_status) {
+					
+					//store begin of scanning period
+					if (myobridge_status == MYB_STATUS_SCANNING) {
+						scan_start_time = millis();
+					}
 					
 					//is equivalent to MyoBridge system status until connected
 					if (myobridge_status < MYB_STATUS_READY) {
@@ -185,11 +221,14 @@ MyoBridgeSignal MyoBridge::processPackage() {
 								conConnectionEvent(connection_status);
 							}
 						} else {
-							connection_status = CONN_STATUS_LOST;
-							
-							//call verbose callback function if available
-							if (conConnectionEvent != NULL) {
-								conConnectionEvent(connection_status);
+							//we have lost the connection if the Bluetooth module tries to reconnect.
+							if (myobridge_status < MYB_STATUS_CONNECTING) {
+								connection_status = CONN_STATUS_LOST;
+								
+								//call verbose callback function if available
+								if (conConnectionEvent != NULL) {
+									conConnectionEvent(connection_status);
+								}
 							}
 						}
 					}
@@ -249,7 +288,7 @@ MyoBridgeSignal MyoBridge::processPackage() {
 /**
  * Sends a command and waits for write confirmation, retrys if necessary.
  */
-MyoBridgeSignal MyoBridge::doConfirmedWrite(uint8_t* pData) {
+MyoBridgeSignal MyoBridge::doConfirmedWrite(uint8_t* pData, bool retry) {
 	
 	
 	bool done = false;
@@ -279,6 +318,11 @@ MyoBridgeSignal MyoBridge::doConfirmedWrite(uint8_t* pData) {
 			if ((write_complete) && (myobridge_status == MYB_STATUS_READY)) {
 				done = true;
 			}
+		}
+		
+		//exit if retry is not permitted
+		if (!retry) {
+			done = true;
 		}
 	}
 	
@@ -374,7 +418,7 @@ MyoBridgeSignal MyoBridge::sendCommand(uint8_t* pData) {
 
 
 MyoBridgeSignal MyoBridge::receiveSerial() {
-	
+
   while (myo->available()) {
     char recv = myo->read();
     //store received byte in serial buffer
@@ -410,7 +454,8 @@ MyoBridgeSignal MyoBridge::receiveSerial() {
 		memcpy(&packet_buffer[0], &serialBuffer[start_index + 2], end_index - start_index - 2);
 		eraseBuffer(end_index + 1);
 		
-		
+		//remember the time
+		last_package_received_time = millis();
 		//announce the new packet
 		new_packet_available = true;
 		//there cannot be a result available for this packet
@@ -553,6 +598,7 @@ void MyoBridge::disableSleep() {
  * @brief enables sleep mode
  */
 void MyoBridge::enableSleep() {
+	
 	myohw_command_set_sleep_mode_t sleep_mode_cmd;
 	sleep_mode_cmd.header.command = myohw_command_set_sleep_mode;
 	sleep_mode_cmd.header.payload_size = 1;
@@ -565,6 +611,45 @@ void MyoBridge::enableSleep() {
     cmd.pData = (uint8_t*)&sleep_mode_cmd;
 	
 	doConfirmedWrite((uint8_t*)&cmd);
+}
+
+/**
+ * @brief Get the current battery level of the Myo Armband. Values in percent from 0-100.
+ */
+byte MyoBridge::getBatteryLevel() {
+	
+	MYBReadCmd_t read_batt_cmd;
+	read_batt_cmd.hdr.cmd = MYB_CMD_READ_CHAR;
+	read_batt_cmd.index = MYO_CHAR_BATTERY_LEVEL;
+	
+	uint8_t status = doPersistentRead((uint8_t*) &read_batt_cmd);
+	if (status != SUCCESS) {
+		return 255;
+	} else {
+		return result_buffer[0];
+	}
+}
+
+/**
+ * @brief send a vibration command to the Myo.
+ * @param type Vibration type. 0: None, 1: Short, 2: Medium, 3: Long
+ */
+void MyoBridge::vibrate(byte type) {
+	
+	myohw_command_vibrate_t vibration_cmd;
+	vibration_cmd.header.command = myohw_command_vibrate;
+	vibration_cmd.header.payload_size = 1;
+	vibration_cmd.type = type;
+	
+	MYBWriteCmd_t cmd;
+	cmd.hdr.cmd = MYB_CMD_WRITE_CHAR;
+    cmd.index = MYO_CHAR_COMMAND;
+    cmd.len = sizeof(myohw_command_vibrate_t);
+    cmd.pData = (uint8_t*)&vibration_cmd;
+	
+	//we dont want retry for the vibration command, but still wait to keep the 
+	//write response from messing up following commands.
+	doConfirmedWrite((uint8_t*)&cmd, false);
 }
 	
 

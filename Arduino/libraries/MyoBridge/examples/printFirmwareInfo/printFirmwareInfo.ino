@@ -1,3 +1,14 @@
+/**
+ * @file   printFirmwareInfo.ino
+ * @author Valentin Roland (webmaster at vroland.de)
+ * @date   September-October 2015
+ * @brief  Example file demonstrating connecting to and reading data from the Myo.
+ *
+ * This file is part of the MyoBridge Project. For more information, visit https://github.com/vroland/MyoBridge.
+ *
+ * @include printFirmwareInfo.ino
+ */
+
 #include <MyoBridge.h>
 #include <SoftwareSerial.h>
 
@@ -56,6 +67,14 @@ void setup() {
   //print the name of the unlock pose as string
   Serial.print("Unlock Pose: ");
   Serial.println(bridge.poseToString(unlockPose));
+  
+  //get the current battery level and print it
+  byte batteryLevel = bridge.getBatteryLevel();
+  Serial.print("Battery Level: ");
+  Serial.println(batteryLevel);
+  
+  //short vibration to show we are ready
+  bridge.vibrate(1);
 }
 
 void loop() {

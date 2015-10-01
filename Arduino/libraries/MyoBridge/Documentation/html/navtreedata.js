@@ -14,7 +14,7 @@ var NAVTREE =
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
@@ -29,8 +29,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_myo_bridge_8cpp.html",
-"group__myo__hardware.html#gga12d65c4fae34c60d2f8a9eea7958dbb7ac59bb2c82d144d8367c781e143b43896",
-"struct_m_y_o_h_w___p_a_c_k_e_d.html#a3b40747df7a523ea7d9cfa15efcaff3a"
+"group__myo__hardware.html#ga8912ee438db4275967233a844a8c36f1",
+"struct_m_y_b_get_status_cmd__t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

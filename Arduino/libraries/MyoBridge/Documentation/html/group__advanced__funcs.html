@@ -8,14 +8,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-  $(document).ready(initResizable);
-  $(window).load(resizeHeight);
-</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -71,20 +63,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){initNavTree('group__advanced__funcs.html','');});
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -113,11 +91,11 @@ $(document).ready(function(){initNavTree('group__advanced__funcs.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#ga38ee56d816b6016b2eefc3581c6eb1ee">MyoBridge::sendCommand</a> (uint8_t *pData)</td></tr>
-<tr class="memdesc:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a command as defined in <a class="el" href="_myo_bridge_types_8h.html" title="Header file of MyoBridge Typedefs, Constants, Enums, Etc. for use with Arduino. ">MyoBridgeTypes.h</a> to the <a class="el" href="class_myo_bridge.html">MyoBridge</a>.  <a href="#ga38ee56d816b6016b2eefc3581c6eb1ee">More...</a><br /></td></tr>
+<tr class="memdesc:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not recommended! Use doComfirmedWrite or doPersistentRead instead.  <a href="#ga38ee56d816b6016b2eefc3581c6eb1ee">More...</a><br /></td></tr>
 <tr class="separator:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9a75b6b7aa9889db10111fb716e91b27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#ga9a75b6b7aa9889db10111fb716e91b27">MyoBridge::doConfirmedWrite</a> (uint8_t *pData)</td></tr>
-<tr class="memdesc:ga9a75b6b7aa9889db10111fb716e91b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command and waits for write confirmation, retrys if necessary.  <a href="#ga9a75b6b7aa9889db10111fb716e91b27">More...</a><br /></td></tr>
-<tr class="separator:ga9a75b6b7aa9889db10111fb716e91b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea589b1f77b598db320ca0c24bf42ecb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#gaea589b1f77b598db320ca0c24bf42ecb">MyoBridge::doConfirmedWrite</a> (uint8_t *pData, bool retry=true)</td></tr>
+<tr class="memdesc:gaea589b1f77b598db320ca0c24bf42ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command and waits for write confirmation, retrys if necessary.  <a href="#gaea589b1f77b598db320ca0c24bf42ecb">More...</a><br /></td></tr>
+<tr class="separator:gaea589b1f77b598db320ca0c24bf42ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeb246fdfa656de14bd345d80762f54eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#gaeb246fdfa656de14bd345d80762f54eb">MyoBridge::doPersistentRead</a> (uint8_t *command)</td></tr>
 <tr class="memdesc:gaeb246fdfa656de14bd345d80762f54eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a read command and waits for data response, retrys if necessary.  <a href="#gaeb246fdfa656de14bd345d80762f54eb">More...</a><br /></td></tr>
 <tr class="separator:gaeb246fdfa656de14bd345d80762f54eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,7 +128,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga9a75b6b7aa9889db10111fb716e91b27"></a>
+<a class="anchor" id="gaea589b1f77b598db320ca0c24bf42ecb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -158,8 +136,18 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a> MyoBridge::doConfirmedWrite </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>pData</em></td><td>)</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>retry</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -218,20 +206,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>send a command as defined in <a class="el" href="_myo_bridge_types_8h.html" title="Header file of MyoBridge Typedefs, Constants, Enums, Etc. for use with Arduino. ">MyoBridgeTypes.h</a> to the <a class="el" href="class_myo_bridge.html">MyoBridge</a>. </p>
-<p>Not recommended. Use doComfirmedWrite or doPersistentRead instead. </p>
+<p>Not recommended! Use doComfirmedWrite or doPersistentRead instead. </p>
+<p>send a command as defined in <a class="el" href="_myo_bridge_types_8h.html" title="Header file of MyoBridge Typedefs, Constants, Enums, Etc. for use with Arduino. ">MyoBridgeTypes.h</a> to the <a class="el" href="class_myo_bridge.html">MyoBridge</a>. using this function without waiting for the write response way break other <a class="el" href="group__advanced__funcs.html#gaea589b1f77b598db320ca0c24bf42ecb" title="Sends a command and waits for write confirmation, retrys if necessary. ">doConfirmedWrite()</a> calls, because they receive the old response. </p>
 
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
 </body>
 </html>

@@ -1,16 +1,17 @@
 var class_myo_bridge =
 [
-    [ "MyoBridge", "group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293", null ],
+    [ "MyoBridge", "group__basic__funcs.html#gad0c33d21c91c3d25255a52cde47e925d", null ],
     [ "begin", "group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8", null ],
     [ "connectionStatusToString", "group__utility__funcs.html#gacba3fc3a629cfe244feff21f521bff00", null ],
     [ "disableAllMessages", "group__advanced__funcs.html#ga1d5259d0651474d18909eb2f5c24b36b", null ],
     [ "disablePoseData", "group__basic__funcs.html#gada461094adb8f2aa68bd29476b533c6c", null ],
     [ "disableSleep", "group__basic__funcs.html#gac67b7cf02b451c5bc94dccc3730a404d", null ],
-    [ "doConfirmedWrite", "group__advanced__funcs.html#ga9a75b6b7aa9889db10111fb716e91b27", null ],
+    [ "doConfirmedWrite", "group__advanced__funcs.html#gaea589b1f77b598db320ca0c24bf42ecb", null ],
     [ "doPersistentRead", "group__advanced__funcs.html#gaeb246fdfa656de14bd345d80762f54eb", null ],
     [ "enableAllMessages", "group__advanced__funcs.html#ga52ae472dcf995d2806e7eb190f4b214b", null ],
     [ "enablePoseData", "group__basic__funcs.html#ga619d927ea7aca5333685717869db2f0d", null ],
     [ "enableSleep", "group__basic__funcs.html#gae9f63a6013004c894fe365343933ba61", null ],
+    [ "getBatteryLevel", "group__basic__funcs.html#ga68e5ac3315ac5e8f4677eaafdb088bb7", null ],
     [ "getFirmwareMajor", "group__basic__funcs.html#ga356267611fd901901a70413f45e192e0", null ],
     [ "getFirmwareMinor", "group__basic__funcs.html#gaf26706bf32f6cab745b5bef9b968c0b7", null ],
     [ "getFirmwarePatch", "group__basic__funcs.html#gafc70a718c92b0162fd43d10ffc1fbe5c", null ],
@@ -27,5 +28,6 @@ var class_myo_bridge =
     [ "setIMUMotionCallBack", "group__callback__funcs.html#ga2b3d5fa3fcde7b8095aa66aad87ea1f3", null ],
     [ "setPoseEventCallBack", "group__callback__funcs.html#gac7feb1c5978e1f7064b879f60fcead6f", null ],
     [ "unlockMyo", "group__basic__funcs.html#gacf21fbfe35625c9b782dc890952d557e", null ],
-    [ "update", "group__basic__funcs.html#ga085f3de45bc0667ea7263274874713ca", null ]
+    [ "update", "group__basic__funcs.html#ga085f3de45bc0667ea7263274874713ca", null ],
+    [ "vibrate", "group__basic__funcs.html#ga023c11b4bead1fd3f512ad101fb25a93", null ]
 ];

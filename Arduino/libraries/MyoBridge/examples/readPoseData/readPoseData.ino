@@ -1,3 +1,15 @@
+/**
+ * @file   readPoseData.ino
+ * @author Valentin Roland (webmaster at vroland.de)
+ * @date   September-October 2015
+ * @brief  Example file demonstrating the pose data reading.
+ *
+ * This file is part of the MyoBridge Project. For more information, visit https://github.com/vroland/MyoBridge.
+ * 
+ * @include readPoseData.ino
+ */
+ 
+ 
 #include <MyoBridge.h>
 #include <SoftwareSerial.h>
 

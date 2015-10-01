@@ -13,6 +13,7 @@ var searchData=
   ['setimumode',['setIMUMode',['../group__basic__funcs.html#ga2e522738fcd9353c2e2d55a4894b6fad',1,'MyoBridge']]],
   ['setimumotioncallback',['setIMUMotionCallBack',['../group__callback__funcs.html#ga2b3d5fa3fcde7b8095aa66aad87ea1f3',1,'MyoBridge']]],
   ['setposeeventcallback',['setPoseEventCallBack',['../group__callback__funcs.html#gac7feb1c5978e1f7064b879f60fcead6f',1,'MyoBridge']]],
+  ['setup',['setup',['../print_firmware_info_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;printFirmwareInfo.ino'],['../read_e_m_g_data_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;readEMGData.ino'],['../read_i_m_u_data_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;readIMUData.ino'],['../read_pose_data_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;readPoseData.ino']]],
   ['sku',['sku',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#a74dc077e9a8d8404b8651b6fd23e665b',1,'MYOHW_PACKED']]],
   ['sleep_5fmode',['sleep_mode',['../struct_m_y_o_h_w___p_a_c_k_e_d.html#abff3bb813c386f445df61694b66f458b',1,'MYOHW_PACKED']]],
   ['status',['status',['../struct_m_y_b_async_status_cmd__t.html#a474263276ca4a2137e2b70edb5e627bd',1,'MYBAsyncStatusCmd_t::status()'],['../struct_m_y_b_status_rsp__t.html#a9e77fcc606195fd193673b676566397b',1,'MYBStatusRsp_t::status()']]],

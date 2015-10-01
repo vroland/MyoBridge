@@ -1,3 +1,14 @@
+/**
+ * @file   readIMUData.ino
+ * @author Valentin Roland (webmaster at vroland.de)
+ * @date   September-October 2015
+ * @brief  Example file demonstrating the IMU data streaming feature.
+ *
+ * This file is part of the MyoBridge Project. For more information, visit https://github.com/vroland/MyoBridge.
+ *
+ * @include readIMUData.ino
+ */
+
 #include <MyoBridge.h>
 #include <SoftwareSerial.h>
 

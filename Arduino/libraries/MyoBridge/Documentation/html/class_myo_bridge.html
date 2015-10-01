@@ -8,14 +8,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-  $(document).ready(initResizable);
-  $(window).load(resizeHeight);
-</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -77,21 +69,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){initNavTree('class_myo_bridge.html','');});
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -106,6 +83,7 @@ $(document).ready(function(){initNavTree('class_myo_bridge.html','');});
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -119,9 +97,9 @@ $(document).ready(function(){initNavTree('class_myo_bridge.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293">MyoBridge</a> (Stream &amp;serialConnection)</td></tr>
-<tr class="memdesc:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_myo_bridge.html">MyoBridge</a> object.  <a href="group__basic__funcs.html#ga66d437ba20b8ffce1fcc1f2924a8c293">More...</a><br /></td></tr>
-<tr class="separator:ga66d437ba20b8ffce1fcc1f2924a8c293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0c33d21c91c3d25255a52cde47e925d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gad0c33d21c91c3d25255a52cde47e925d">MyoBridge</a> (Stream &amp;serialConnection, byte resetPin=255)</td></tr>
+<tr class="memdesc:gad0c33d21c91c3d25255a52cde47e925d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_myo_bridge.html">MyoBridge</a> object.  <a href="group__basic__funcs.html#gad0c33d21c91c3d25255a52cde47e925d">More...</a><br /></td></tr>
+<tr class="separator:gad0c33d21c91c3d25255a52cde47e925d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8">begin</a> (void(*conConnectionEvent)(<a class="el" href="_myo_bridge_8h.html#aaf88bddfc01bb3cb9ccf3077b1da5522">MyoConnectionStatus</a>)=NULL)</td></tr>
 <tr class="memdesc:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the <a class="el" href="class_myo_bridge.html">MyoBridge</a> to connect to the MyoArmband and retrieve initial data.  <a href="group__basic__funcs.html#ga362caf3b69a6979cd4e8ec4f7ed7fcd8">More...</a><br /></td></tr>
 <tr class="separator:ga362caf3b69a6979cd4e8ec4f7ed7fcd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:gab850c1decfbb452766f8e17e9c2599e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#ab159adc849532c0d05220f3018da7bec">MyoPose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gab850c1decfbb452766f8e17e9c2599e9">getUnlockPose</a> ()</td></tr>
 <tr class="memdesc:gab850c1decfbb452766f8e17e9c2599e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pose used for unlocking.  <a href="group__basic__funcs.html#gab850c1decfbb452766f8e17e9c2599e9">More...</a><br /></td></tr>
 <tr class="separator:gab850c1decfbb452766f8e17e9c2599e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68e5ac3315ac5e8f4677eaafdb088bb7"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga68e5ac3315ac5e8f4677eaafdb088bb7">getBatteryLevel</a> ()</td></tr>
+<tr class="memdesc:ga68e5ac3315ac5e8f4677eaafdb088bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current battery level of the Myo Armband.  <a href="group__basic__funcs.html#ga68e5ac3315ac5e8f4677eaafdb088bb7">More...</a><br /></td></tr>
+<tr class="separator:ga68e5ac3315ac5e8f4677eaafdb088bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2e522738fcd9353c2e2d55a4894b6fad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga2e522738fcd9353c2e2d55a4894b6fad">setIMUMode</a> (<a class="el" href="_myo_bridge_8h.html#a54c22dd129ffbd60f8f85c70c2ed68b6">MyoIMUMode</a> mode)</td></tr>
 <tr class="memdesc:ga2e522738fcd9353c2e2d55a4894b6fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the IMU data mode.  <a href="group__basic__funcs.html#ga2e522738fcd9353c2e2d55a4894b6fad">More...</a><br /></td></tr>
 <tr class="separator:ga2e522738fcd9353c2e2d55a4894b6fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,6 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:gae9f63a6013004c894fe365343933ba61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#gae9f63a6013004c894fe365343933ba61">enableSleep</a> ()</td></tr>
 <tr class="memdesc:gae9f63a6013004c894fe365343933ba61"><td class="mdescLeft">&#160;</td><td class="mdescRight">enables sleep mode.  <a href="group__basic__funcs.html#gae9f63a6013004c894fe365343933ba61">More...</a><br /></td></tr>
 <tr class="separator:gae9f63a6013004c894fe365343933ba61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga023c11b4bead1fd3f512ad101fb25a93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__basic__funcs.html#ga023c11b4bead1fd3f512ad101fb25a93">vibrate</a> (byte type)</td></tr>
+<tr class="memdesc:ga023c11b4bead1fd3f512ad101fb25a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a vibration command to the Myo.  <a href="group__basic__funcs.html#ga023c11b4bead1fd3f512ad101fb25a93">More...</a><br /></td></tr>
+<tr class="separator:ga023c11b4bead1fd3f512ad101fb25a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03b432c626750b5a9c001c57537aba3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__callback__funcs.html#ga03b432c626750b5a9c001c57537aba3b">setIMUDataCallBack</a> (void(*onIMUDataEvent)(<a class="el" href="_myo_bridge_8h.html#a9852d951ad719e3ed1733447898fa384">MyoIMUData</a> &amp;))</td></tr>
 <tr class="memdesc:ga03b432c626750b5a9c001c57537aba3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for IMU data, packed in the MyoIMUData data type.  <a href="group__callback__funcs.html#ga03b432c626750b5a9c001c57537aba3b">More...</a><br /></td></tr>
 <tr class="separator:ga03b432c626750b5a9c001c57537aba3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,11 +167,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:gab321a2fe2fc598fdc4b9c12a6cf8d100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for EMG data, as array of 8-Bit signed numbers.  <a href="group__callback__funcs.html#gab321a2fe2fc598fdc4b9c12a6cf8d100">More...</a><br /></td></tr>
 <tr class="separator:gab321a2fe2fc598fdc4b9c12a6cf8d100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#ga38ee56d816b6016b2eefc3581c6eb1ee">sendCommand</a> (uint8_t *pData)</td></tr>
-<tr class="memdesc:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a command as defined in <a class="el" href="_myo_bridge_types_8h.html" title="Header file of MyoBridge Typedefs, Constants, Enums, Etc. for use with Arduino. ">MyoBridgeTypes.h</a> to the <a class="el" href="class_myo_bridge.html">MyoBridge</a>.  <a href="group__advanced__funcs.html#ga38ee56d816b6016b2eefc3581c6eb1ee">More...</a><br /></td></tr>
+<tr class="memdesc:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not recommended! Use doComfirmedWrite or doPersistentRead instead.  <a href="group__advanced__funcs.html#ga38ee56d816b6016b2eefc3581c6eb1ee">More...</a><br /></td></tr>
 <tr class="separator:ga38ee56d816b6016b2eefc3581c6eb1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9a75b6b7aa9889db10111fb716e91b27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#ga9a75b6b7aa9889db10111fb716e91b27">doConfirmedWrite</a> (uint8_t *pData)</td></tr>
-<tr class="memdesc:ga9a75b6b7aa9889db10111fb716e91b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command and waits for write confirmation, retrys if necessary.  <a href="group__advanced__funcs.html#ga9a75b6b7aa9889db10111fb716e91b27">More...</a><br /></td></tr>
-<tr class="separator:ga9a75b6b7aa9889db10111fb716e91b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea589b1f77b598db320ca0c24bf42ecb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#gaea589b1f77b598db320ca0c24bf42ecb">doConfirmedWrite</a> (uint8_t *pData, bool retry=true)</td></tr>
+<tr class="memdesc:gaea589b1f77b598db320ca0c24bf42ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command and waits for write confirmation, retrys if necessary.  <a href="group__advanced__funcs.html#gaea589b1f77b598db320ca0c24bf42ecb">More...</a><br /></td></tr>
+<tr class="separator:gaea589b1f77b598db320ca0c24bf42ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeb246fdfa656de14bd345d80762f54eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_myo_bridge_8h.html#aa37476b945410b138d2a66c88ededf26">MyoBridgeSignal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__advanced__funcs.html#gaeb246fdfa656de14bd345d80762f54eb">doPersistentRead</a> (uint8_t *command)</td></tr>
 <tr class="memdesc:gaeb246fdfa656de14bd345d80762f54eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a read command and waits for data response, retrys if necessary.  <a href="group__advanced__funcs.html#gaeb246fdfa656de14bd345d80762f54eb">More...</a><br /></td></tr>
 <tr class="separator:gaeb246fdfa656de14bd345d80762f54eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,15 +193,11 @@ Public Member Functions</h2></td></tr>
 <li><a class="el" href="_myo_bridge_8cpp.html">MyoBridge.cpp</a></li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="class_myo_bridge.html">MyoBridge</a></li>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
 </body>
 </html>
