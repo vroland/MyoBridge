@@ -1,0 +1,82 @@
+#######################################
+# Syntax Coloring Map For MyoBridge
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MyoBridge				KEYWORD1
+MyoBridgeSignal			KEYWORD1
+MyoPose					KEYWORD1
+MyoIMUMode				KEYWORD1
+MyoEMGMode				KEYWORD1
+MyoIMUMotion			KEYWORD1
+MyoIMUData				KEYWORD1
+MyoConnectionStatus		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin		KEYWORD2
+update	KEYWORD2
+getFirmwareMajor	KEYWORD2
+getFirmwareMinor	KEYWORD2
+getFirmwarePatch	KEYWORD2
+getHardwareRevision	KEYWORD2
+getHardwareAddress	KEYWORD2
+getUnlockPose		KEYWORD2
+getBatteryLevel		KEYWORD2
+setIMUMode			KEYWORD2
+setEMGMode			KEYWORD2
+enablePoseData		KEYWORD2
+disablePoseData		KEYWORD2
+unlockMyo			KEYWORD2
+lockMyo				KEYWORD2
+disableSleep		KEYWORD2
+enableSleep			KEYWORD2
+vibrate				KEYWORD2
+setIMUDataCallBack	KEYWORD2
+setIMUMotionCallBack	KEYWORD2
+setPoseEventCallBack	KEYWORD2
+setEMGDataCallBack	KEYWORD2
+doConfirmedWrite	KEYWORD2
+doPersistentRead	KEYWORD2
+enableAllMessages	KEYWORD2
+disableAllMessages	KEYWORD2
+poseToString		KEYWORD2
+connectionStatusToString	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+MYO_POSE_REST				LITERAL1
+MYO_POSE_FIST				LITERAL1
+MYO_POSE_WAVE_IN 			LITERAL1
+MYO_POSE_WAVE_OUT			LITERAL1
+MYO_POSE_FINGERS_SPREAD		LITERAL1
+MYO_POSE_DOUBLE_TAP 		LITERAL1
+MYO_POSE_UNKNOWN			LITERAL1
+
+IMU_MODE_NONE				LITERAL1
+IMU_MODE_SEND_DATA			LITERAL1
+IMU_MODE_SEND_EVENTS		LITERAL1
+IMU_MODE_SEND_ALL			LITERAL1
+IMU_MODE_SEND_RAW			LITERAL1
+
+EMG_MODE_NONE			LITERAL1
+EMG_MODE_SEND			LITERAL1
+EMG_MODE_RAW			LITERAL1
+
+IMU_MOTION_TAP			LITERAL1
+
+CONN_STATUS_UNKNOWN			LITERAL1
+CONN_STATUS_INIT			LITERAL1
+CONN_STATUS_SCANNING		LITERAL1
+CONN_STATUS_CONNECTING		LITERAL1
+CONN_STATUS_DISCOVERING		LITERAL1
+CONN_STATUS_BRIDGE_SETUP	LITERAL1
+CONN_STATUS_READY			LITERAL1
+CONN_STATUS_LOST			LITERAL1
